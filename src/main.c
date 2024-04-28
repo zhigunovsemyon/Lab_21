@@ -103,14 +103,14 @@ int main(void)
 			break;
 
 		case WRITE_TXT:
-			printf("Название открываемого файла: ");
+			printf("Название записываемого файла: ");
 			scanf("%255s", fname);
 			if (WriteTextFile(fname, matrix))
 				puts("Не удалось записать матрицу!");
 			break;
 
 		case WRITE_BIN:
-			printf("Название открываемого файла: ");
+			printf("Название записываемого файла: ");
 			scanf("%255s", fname);
 			if (WriteBinary(fname, matrix))
 				puts("Не удалось записать матрицу!");
@@ -180,7 +180,6 @@ uint8_t CommandPicker(double **flag)
 		case 'd':
 		case 'D':
 			return REMOVE;
-			// return (flag) ? REMOVE : INVALID;
 		case 'p':
 		case 'P':
 			return (flag) ? PRINT : INVALID;
