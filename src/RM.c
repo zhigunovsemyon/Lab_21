@@ -1,9 +1,9 @@
 #include "RM.h"
 
 // Получение адреса начала сегмента (строки или всего массива)
-static char *int_GetMinusOne(char *p)
+static char *int_GetMinusOne(void *p)
 {
-	return (char *)(((uint16_t *)p) - 1);
+	return (void *)(((uint16_t *)p) - 1);
 }
 
 /*Функция считает сумму элементов данного массива arr из элементов Amount */
