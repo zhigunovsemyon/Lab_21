@@ -274,10 +274,7 @@ double **ReadTextFile(const char *fname)
 // Возврат случайного числа из диапазона [a, b]. Требует предварительной инициализации посредством srand()
 double Random(double x, double y)
 {
-	// Требует доработки для генерации нецелых чисел
-	int a = (int)x;
-	int b = (int)y;
-	return (double)(rand() % (b - a + 1) + a);
+	return x + (double) (rand()) / ((double) (RAND_MAX / (y - x)));
 }
 
 // Заполнение матрицы arr случайными числами
