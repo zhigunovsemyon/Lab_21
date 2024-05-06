@@ -38,7 +38,6 @@ uint16_t *CreateSizeArray(uint16_t rows);
 
 enum Commands
 {
-	INVALID,
 	LEAVE,
 	MANUAL_CREATE,
 	READ_TXT,
@@ -76,13 +75,13 @@ int main(void)
 		}
 		break;
 
-		case FILL_RANDOM:{
+		case FILL_RANDOM: {
 			double r[2];
 			printf("Введите диапазон чисел: ");
 			scanf("%lf %lf", r, r + 1);
 			FillMatrixRandom(matrix, *r, *(r + 1));
 		}
-			break;
+		break;
 
 		case FILL_MANUAL:
 			FillMatrixManualy(matrix);
@@ -182,12 +181,15 @@ uint8_t CommandPicker(double **flag)
 			return REMOVE;
 		case 'p':
 		case 'P':
-			return (flag) ? PRINT : INVALID;
+			return PRINT;
+			break;
 		case '0':
-			return (flag) ? FILL_ZERO : INVALID;
+			return FILL_ZERO;
+			break;
 		case 'r':
 		case 'R':
-			return (flag) ? FILL_RANDOM : INVALID;
+			return FILL_RANDOM;
+			break;
 		case 'b':
 		case 'B':
 			return (flag) ? WRITE_BIN : READ_BIN;
@@ -274,7 +276,7 @@ double **ReadTextFile(const char *fname)
 // Возврат случайного числа из диапазона [a, b]. Требует предварительной инициализации посредством srand()
 double Random(double x, double y)
 {
-	return x + (double) (rand()) / ((double) (RAND_MAX / (y - x)));
+	return x + (double)(rand()) / ((double)(RAND_MAX / (y - x)));
 }
 
 // Заполнение матрицы arr случайными числами
